@@ -127,7 +127,9 @@
     transition: background var(--transition);
   }
 
-   /*-------- BRAND-------------*/
+ /*=================================
+               BRAND
+  =================================*/
 
   .brand {
     display: flex;
@@ -154,7 +156,9 @@
     transform: rotate(-8deg) scale(1.08);
   }
 
-  /*--------------NAVIGATION--------------*/
+  /*======================================
+                  NAVIGATION
+  ========================================*/
 
   .main-nav {
     display: flex;
@@ -207,7 +211,9 @@
     }
   }
 
- /*====== HEADER ACTIONS ========*/
+ /*================================
+           HEADER ACTIONS
+  ================================*/
 
   .top-actions {
     display: flex;
@@ -221,7 +227,9 @@
     align-items: center;
   }
 
-  /*========= BUTTONS=============*/
+  /*=================================
+              BUTTONS
+  ==================================*/
 
   .btn {
     min-height: 38px;
@@ -251,7 +259,9 @@
     transform: scale(0.97);
   }
 
-  /*========= THEME BUTTON ==============*/
+  /*=================================
+            THEME BUTTONS
+  ===================================*/
 
   .theme-btn {
     width: 38px;
@@ -352,7 +362,9 @@
   <body>
     <main>
 
-      <!-----------HEADER Navbar html Design : Part - 1---------------->
+      <!--//////////////////////////////////////////////////////
+                HEADER Navbar html Design : Part - 1
+      ///////////////////////////////////////////////////////-->
     <header class="top">
       <div class="brand">
         <div class="logo">N</div>
@@ -377,54 +389,54 @@
         </button>
       </div>  
     </header>
-    <!-----------------------END Header Navbar Part - 1 ---------------->
+    <!--==================== END Header Navbar Part - 1 ================--->
       
       
     </main>
     <script>
-      /*-------JAVASCRIPT--------*/
+      /*=========================================================
+                          JAVASCRIPT START
+      ==========================================================*/
       
-/* =================================
-   NAVAA THEME SYSTEM
-================================= */
+      /*========================================
+                  NAVAA THEME SYSTEM
+      ========================================*/
 
-const themeToggle = document.getElementById("themeToggle");
+      const themeToggle = document.getElementById("themeToggle");
+      function setTheme(theme) {
+        document.documentElement.setAttribute(
+          "data-theme",
+          theme
+        );
 
-function setTheme(theme) {
+        localStorage.setItem("navaa-theme", theme);
 
-  document.documentElement.setAttribute(
-    "data-theme",
-    theme
-  );
+        if (themeToggle) {
+          themeToggle.textContent =
+            theme === "dark" ? "☀" : "☾";
+        }
+      }
+      
+      /**************************************
+                  Load saved theme
+      **************************************/
 
-  localStorage.setItem("navaa-theme", theme);
+      const savedTheme =
+        localStorage.getItem("navaa-theme") || "dark";
+      setTheme(savedTheme);
 
-  if (themeToggle) {
-    themeToggle.textContent =
-      theme === "dark" ? "☀" : "☾";
-  }
+    /**************************************
+                  Toggle theme
+    **************************************/
 
-}
+      themeToggle.addEventListener("click", () => {
 
-// Load saved theme
-
-const savedTheme =
-  localStorage.getItem("navaa-theme") || "dark";
-
-setTheme(savedTheme);
-
-// Toggle theme
-
-themeToggle.addEventListener("click", () => {
-
-  const currentTheme =
-    document.documentElement.getAttribute("data-theme");
-
-  setTheme(
-    currentTheme === "dark" ? "light" : "dark"
-  );
-
-});
+        const currentTheme =
+          document.documentElement.getAttribute("data-theme");
+        setTheme(
+          currentTheme === "dark" ? "light" : "dark"
+        );
+      });
 
 
 
